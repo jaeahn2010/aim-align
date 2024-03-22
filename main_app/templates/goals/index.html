@@ -5,12 +5,14 @@
 
 {% for goal in goals %}
     <div class="card">
-        <div class="card-content">
-            <span class="card-title">{{ goal.title }}</span>
-            <p>DURATION</p>
-            <p>Start date: {{ goal.start_date }}</p>
-            <p>End date: {{ goal.end_date }}</p>
-        </div>
+        <a href="{% url 'detail' goal.id %}">
+            <div class="card-content">
+                <span class="card-title">{{ goal.title }}</span>
+                <p>DURATION</p>
+                <p>Start date: {{ goal.start_date }}</p>
+                <p>End date: {{ goal.end_date }}</p>
+            </div>
+        </a>dcxvvc
     </div>
 {% endfor %}
 

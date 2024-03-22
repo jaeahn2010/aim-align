@@ -1,20 +1,6 @@
 from django.shortcuts import render
-
-# mock data
-goals = [
-    {
-        'id': 1,
-        'title': 'finish project',
-        'start_date': '2024-03-22',
-        'end_date': '2024-03-29',
-    },
-    {
-        'id': 2,
-        'title': 'finish housework',
-        'start_date': '2024-03-22',
-        'end_date': '2024-03-24',
-    },
-]
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Goal
 
 # Create your views here.
 
@@ -25,6 +11,23 @@ def about(request):
     return render(request, 'about.html')
 
 def goals_index(request):
+    goals = Goal.objects.all()
     return render(request, 'goals/index.html', {
         'goals': goals
     })
+
+def goals_detail(request, goal_id):
+    goal = Goal.objects.get(id=goal_id)
+    return render(request, 'goals/detail.html', { 'goal': goal })
+
+class GoalCreate(CreateView):
+    model = Goal
+    fields = '__all__'
+
+class GoalUpdate(UpdateView):
+    model = Goal
+    fields = '__all__'
+
+class GoalDelete(DeleteView):
+    model = Goal
+    success_url = '/goals'

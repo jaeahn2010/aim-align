@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib import messages
 from .models import Goal
 from .forms import CheckpointForm
 
@@ -27,10 +28,12 @@ def goals_detail(request, goal_id):
 
 def add_checkpoint(request, goal_id):
     form = CheckpointForm(request.POST)
-    if form.is_valid():
+    if form.is_valid() and request.POST['start_date'] < request.POST['end_date']:
         new_checkpoint = form.save(commit=False)
         new_checkpoint.goal_id = goal_id
         new_checkpoint.save()
+    else:
+        messages.error(request, 'End date must be set after start date.')
     return redirect('detail', goal_id=goal_id)
 
 class GoalCreate(CreateView):

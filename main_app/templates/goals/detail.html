@@ -21,6 +21,11 @@
             <p>Status: {{ checkpoint.get_status_display }}</p>
         {% endfor %}
     </div>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
     <form action="{% url 'add_checkpoint' goal.id %}" method="POST">
         {% csrf_token %}
         {{ checkpoint_form.as_p }}

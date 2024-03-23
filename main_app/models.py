@@ -27,8 +27,14 @@ class Goal(models.Model):
     
 class Checkpoint(models.Model):
     title = models.TextField(max_length=250)
-    start_date = models.DateField('checkpoint start date', default=timezone.now)
-    end_date = models.DateField('checkpoint end date', default=date.today() + timedelta(days=1))
+    start_date = models.DateField(
+        'checkpoint start date',
+        default=timezone.now,
+        )
+    end_date = models.DateField(
+        'checkpoint end date',
+        default=date.today() + timedelta(days=1),
+        )
     status = models.CharField(
         max_length = 1,
         choices=STATUS,

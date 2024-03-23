@@ -20,8 +20,17 @@
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'goals_create' %}">Set a New Goal</a></li>
-                    <li><a href="{% url 'index' %}">View All Goals</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'goals_create' %}">Set a New Goal</a></li>
+                        <li><a href="{% url 'index' %}">View All Goals</a></li>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Log Out</button>
+                        </form>
+                    {% else %}
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                        <li><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
                 </ul>
                 </div>
             </nav>

@@ -10,4 +10,5 @@ urlpatterns = [
     path('goals/<int:pk>/update/', views.GoalUpdate.as_view(), name='goals_update'),
     path('goals/<int:pk>/delete/', views.GoalDelete.as_view(), name='goals_delete'),
     path('goals/<int:goal_id>/add_checkpoint/', views.add_checkpoint, name='add_checkpoint'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]

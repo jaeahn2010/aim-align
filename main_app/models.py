@@ -22,7 +22,7 @@ class Goal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Goal: {self.title} (status: {self.get_status_display()})"
+        return str(self.id) #need this format for CP absolute url
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'goal_id': self.id})
@@ -46,6 +46,9 @@ class Checkpoint(models.Model):
 
     def __str__(self):
         return f"Checkpoint: {self.title} of goal ID {self.goal} (status: {self.get_status_display()})"
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'goal_id': self.goal})
     
     class Meta:
         ordering = ['end_date']

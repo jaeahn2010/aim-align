@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Goal
+from .models import Goal, Checkpoint
 from .forms import CheckpointForm
 
 # Create your views here.
@@ -71,3 +71,11 @@ class GoalUpdate(LoginRequiredMixin, UpdateView):
 class GoalDelete(LoginRequiredMixin, DeleteView):
     model = Goal
     success_url = '/goals'
+
+class CheckpointUpdate(LoginRequiredMixin, UpdateView):
+    model = Checkpoint
+    fields = ['title', 'start_date', 'end_date']
+
+class CheckpointDelete(LoginRequiredMixin, DeleteView):
+    model = Checkpoint
+    success_url = f"/goals"

@@ -15,10 +15,18 @@
     <div class="card-content">
         <p>CHECKPOINTS</p>
         {% for checkpoint in goal.checkpoint_set.all %}
-            <p>{{ checkpoint.title }}</p>
-            <p>Start date: {{ checkpoint.start_date }}</p>
-            <p>End date: {{ checkpoint.end_date }}</p>
-            <p>Status: {{ checkpoint.get_status_display }}</p>
+            <div class="row">
+                <div class="col s8">
+                    <p>{{ checkpoint.title }}</p>
+                    <p>Start date: {{ checkpoint.start_date }}</p>
+                    <p>End date: {{ checkpoint.end_date }}</p>
+                    <p>Status: {{ checkpoint.get_status_display }}</p>
+                </div>
+                <div class="card-action col s4">
+                    <a href="{% url 'checkpoints_update' checkpoint.id %}">Edit Checkpoint</a>
+                    <a href="{% url 'checkpoints_delete' checkpoint.id %}">Delete Checkpoint</a>
+                </div>
+            </div>
         {% endfor %}
     </div>
     {% if messages %}

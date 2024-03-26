@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Goal, Checkpoint
 from .forms import CheckpointForm
+from datetime import datetime
 
 # Create your views here.
 
@@ -49,10 +50,16 @@ def goals_detail(request, goal_id):
 @login_required
 def add_checkpoint(request, goal_id):
     form = CheckpointForm(request.POST)
-    if form.is_valid() and request.POST['start_date'] < request.POST['end_date']:
-        new_checkpoint = form.save(commit=False)
-        new_checkpoint.goal_id = goal_id
-        new_checkpoint.save()
+    if form.is_valid() and request.POST['start_date'] <= request.POST['end_date']:
+        goal = Goal.objects.get(pk=goal_id)
+        checkpoint_start_date = datetime.strptime(request.POST['start_date'], '%Y-%m-%d').date()
+        checkpoint_end_date = datetime.strptime(request.POST['end_date'], '%Y-%m-%d').date()
+        if goal.start_date <= checkpoint_start_date and goal.end_date >= checkpoint_end_date:
+            new_checkpoint = form.save(commit=False)
+            new_checkpoint.goal_id = goal_id
+            new_checkpoint.save()
+        else:
+            messages.error(request, 'Checkpoint date range must be within the goal date range.')
     else:
         messages.error(request, 'End date must be set after start date.')
     return redirect('detail', goal_id=goal_id)

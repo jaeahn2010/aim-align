@@ -57,6 +57,17 @@ def add_checkpoint(request, goal_id):
         messages.error(request, 'End date must be set after start date.')
     return redirect('detail', goal_id=goal_id)
 
+@login_required
+def checkpoints_update_status(request, checkpoint_id):
+    checkpoint = Checkpoint.objects.get(pk=checkpoint_id)
+    goal = Goal.objects.get(pk=checkpoint.goal_id)
+    checkpoint.status = 'C'
+    checkpoint.status_color = 'green'
+    checkpoint.save()
+    return render(request, 'goals/detail.html', {
+        'goal': goal,
+    })
+
 class GoalCreate(LoginRequiredMixin, CreateView):
     model = Goal
     fields = ['title', 'start_date', 'end_date']

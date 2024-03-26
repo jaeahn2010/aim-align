@@ -42,6 +42,10 @@ class Checkpoint(models.Model):
         choices=STATUS,
         default=STATUS[1][0],
     )
+    status_color = models.TextField(
+        max_length=40,
+        default='red accent-3'
+    )
     goal = models.ForeignKey(Goal, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -68,8 +68,7 @@ def add_checkpoint(request, goal_id):
 def checkpoints_update_status(request, checkpoint_id):
     checkpoint = Checkpoint.objects.get(pk=checkpoint_id)
     goal = Goal.objects.get(pk=checkpoint.goal_id)
-    checkpoint.status = 'C'
-    checkpoint.status_color = 'green'
+    checkpoint.is_complete = True
     checkpoint.save()
     return render(request, 'goals/detail.html', {
         'goal': goal,

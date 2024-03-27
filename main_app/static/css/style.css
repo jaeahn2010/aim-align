@@ -1,3 +1,12 @@
+/* base */
+* {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    animation: fade-in 2s;
+}
+
 body {
     display: flex;
     min-height: 100vh;
@@ -17,6 +26,74 @@ footer.page-footer {
     text-align: right;
 }
 
+#logout-btn {
+    background-color: #7ec835;
+    border: 0px;
+    color: white;
+}
+
+/* home */
+#home-title {
+    margin: 50px 0 150px 0;
+    text-align: center;
+}
+
+#home-main-title {
+    display: flex;
+    justify-content: center;
+}
+
+#aim-top {
+    color: blue;
+    margin-left: 15px;
+    animation: from-top 3s ease-out, color-transform-blue 2s ease-out 3s forwards;
+}
+
+#align-bottom {
+    color: rgb(243, 243, 0);
+    animation: from-bottom 3s ease-out, color-transform-yellow 2s ease-out 3s forwards;
+}
+
+.home-bullets {
+    padding: 200px 0;
+}
+
+.bullet-points {
+    display: flex;
+    align-items: center;
+}
+
+.target-arrow {
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+}
+
+#target-1 {
+    animation: stamp 0.5s linear 5s forwards;
+}
+
+#target-2 {
+    animation: stamp 0.5s linear 6s forwards;
+}
+
+#target-3 {
+    animation: stamp 0.5s linear 7s forwards;
+}
+
+#bullet-1 {
+    animation: slide-from-right 0.5s linear 5.5s forwards;
+}
+
+#bullet-2 {
+    animation: slide-from-right 0.5s linear 6.5s forwards;
+}
+
+#bullet-3 {
+    animation: slide-from-right 0.5s linear 7.5s forwards;
+}
+
+/* details */
 #status-div {
     display: flex;
     align-items: center;
@@ -27,4 +104,39 @@ footer.page-footer {
     height: 15px;
     margin: 0 10px 0 0;
     border-radius: 20px;
+}
+
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes from-top {
+    from {transform: translateY(-1000px);}
+    to {transform: translateY(0);}
+}
+
+@keyframes from-bottom {
+    from {transform: translateY(1000px);}
+    to {transform: translateY(0);} 
+}
+
+@keyframes color-transform-yellow {
+    from {color: rgb(243, 243, 0)}
+    to {color: #7ec835;}
+}
+
+@keyframes color-transform-blue {
+    from {color: blue}
+    to {color: #7ec835;}
+}
+
+@keyframes stamp {
+    from {display: block; transform: scale(100);}
+    to {display: block; width: 50px; height: 50px;}
+}
+
+@keyframes slide-from-right {
+    from {display: none; transform: translateX(1000px);}
+    to {display: block; transform: translateX(0);}
 }

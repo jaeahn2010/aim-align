@@ -4,21 +4,12 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from datetime import date, timedelta
 
-STATUS = (
-    ('C', 'Complete'),
-    ('I', 'Incomplete'),
-)
-
 # Create your models here.
 class Goal(models.Model):
     title = models.TextField(max_length=250)
     start_date = models.DateField(default=timezone.now)
     end_date = models.DateField(default=date.today() + timedelta(days=1))
-    status = models.CharField(
-        max_length = 1,
-        choices=STATUS,
-        default=STATUS[1][0],
-    )
+    is_complete = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -37,15 +28,7 @@ class Checkpoint(models.Model):
         'checkpoint end date',
         default=date.today() + timedelta(days=1),
         )
-    status = models.CharField(
-        max_length = 1,
-        choices=STATUS,
-        default=STATUS[1][0],
-    )
-    status_color = models.TextField(
-        max_length=40,
-        default='red accent-3'
-    )
+    is_complete = models.BooleanField(default=False)
     goal = models.ForeignKey(Goal, on_delete=models.CASCADE)
 
     def __str__(self):

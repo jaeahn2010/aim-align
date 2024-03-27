@@ -9,7 +9,11 @@
         <p>DURATION</p>
         <p>Start date: {{ goal.start_date }}</p>
         <p>End date: {{ goal.end_date }}</p>
-        <p>Status: {{ goal.get_status_display  }} </p>
+        {% if goal.is_complete %}
+            <p>Status: Complete</p>
+        {% else %}
+            <p>Status: Incomplete</p>
+        {% endif %}
         <p>Status bar will go here</p>
     </div>
     <div class="card-content">
@@ -21,9 +25,15 @@
                     <p>Start date: {{ checkpoint.start_date }}</p>
                     <p>End date: {{ checkpoint.end_date }}</p>
                     <div id="status-div">
-                        <div id="status-circle" class="{{ checkpoint.status_color }}"> 
-                        </div>
-                        <p>Status: {{ checkpoint.get_status_display }}</p>
+                        {% if checkpoint.is_complete %}
+                            <div id="status-circle" class="green"> 
+                            </div>
+                            <p>Status: Complete</p>
+                        {% else %}
+                            <div id="status-circle" class="red-accent-3"> 
+                            </div>
+                            <p>Status: Incomplete</p>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="card-action col s4">
@@ -37,11 +47,13 @@
             </div>
         {% endfor %}
     </div>
+    <div id="error-messages">
     {% if messages %}
         {% for message in messages %}
-            <p>{{ message }}</p>
+            <p class="red-text">{{ message }}</p>
         {% endfor %}
     {% endif %}
+    </div>
     <form action="{% url 'add_checkpoint' goal.id %}" method="POST">
         {% csrf_token %}
         {{ checkpoint_form.as_p }}

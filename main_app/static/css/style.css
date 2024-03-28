@@ -4,6 +4,9 @@
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
+}
+
+main {
     animation: fade-in 2s;
 }
 
@@ -60,7 +63,7 @@ footer.page-footer {
 
 .home-bullets {
     margin: 0 auto;
-    padding: 150px 0 150px;
+    padding-top: 75px;
     width: 500px;
 }
 
@@ -97,6 +100,31 @@ footer.page-footer {
 
 #bullet-3 {
     animation: slide-from-right 0.25s ease-out 7.5s backwards;
+}
+
+.learn-more-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fade-in 1s ease-out 8s backwards;
+}
+
+#down-finger {
+    width: 50px;
+    height: auto;
+    margin: 0 30px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.down-finger:hover {
+    cursor: pointer;
+}
+
+.how-to {
+    margin: 30px 0;
+    font-size: 18px;
+    list-style-type: circle;
+    animation: fade-in 1s ease-out 8s backwards;
 }
 
 /* details */
@@ -145,4 +173,10 @@ footer.page-footer {
 @keyframes slide-from-right {
     from {transform: translateX(5000px);}
     to {transform: translateX(0);}
+}
+
+@keyframes bounce {
+    0% {transform: translateY(-10px);}
+    50% {transform: translateY(0);}
+    100% {transform: translateY(-10px);}
 }

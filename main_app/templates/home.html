@@ -23,9 +23,23 @@
         </div>
     </div>
 </div>
-
-<div>
-    <p>How to use this website</p>
+<div class="learn-more-section">
+    <img id="down-finger" onclick="scrollDown()" src="../static/images/down-finger.png"/>
+    <h4>Learn more</h4>
 </div>
+<div class="about-section">
+    <ul class="how-to">
+        <li>&#128073; To create a goal, click on "Set a New Goal".</li>
+        <li>&#128073; Specify the title and date range.</li>
+        <li>&#128073; Optionally, set your checkpoints. Make sure each checkpoint's date range falls within the date range of the overall goal.</li>
+        <li>&#128073; That's it! AimAlign will send you automated reminders according to the schedules/deadlines you set.</li>
+        <li>&#128073; You may create more goals and/or checkpoints! Also, please feel free to edit or delete any of them.</li>
+    </ul>
+</div>
+<script>
+    function scrollDown() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
 
 {% endblock %}

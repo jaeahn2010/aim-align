@@ -54,8 +54,14 @@ footer.page-footer {
     animation: from-bottom 3s ease-out, color-transform-yellow 2s ease-out 3s forwards;
 }
 
+#tagline {
+    animation: from-bottom 1s ease-out 4s backwards, fade-in 1s ease-in 4s backwards;
+}
+
 .home-bullets {
-    padding: 200px 0;
+    margin: 0 auto;
+    padding: 150px 0 150px;
+    width: 500px;
 }
 
 .bullet-points {
@@ -64,33 +70,33 @@ footer.page-footer {
 }
 
 .target-arrow {
-    width: 50px;
-    height: 50px;
+    width: 1px;
+    height: 1px;
     margin-right: 50px;
 }
 
 #target-1 {
-    animation: stamp 0.5s linear 5s forwards;
+    animation: stamp 0.25s linear 5s forwards;
 }
 
 #target-2 {
-    animation: stamp 0.5s linear 6s forwards;
+    animation: stamp 0.25s linear 6s forwards;
 }
 
 #target-3 {
-    animation: stamp 0.5s linear 7s forwards;
+    animation: stamp 0.25s linear 7s forwards;
 }
 
 #bullet-1 {
-    animation: slide-from-right 0.5s linear 5.5s forwards;
+    animation: slide-from-right 0.25s ease-out 5.5s backwards;
 }
 
 #bullet-2 {
-    animation: slide-from-right 0.5s linear 6.5s forwards;
+    animation: slide-from-right 0.25s ease-out 6.5s backwards;
 }
 
 #bullet-3 {
-    animation: slide-from-right 0.5s linear 7.5s forwards;
+    animation: slide-from-right 0.25s ease-out 7.5s backwards;
 }
 
 /* details */
@@ -132,11 +138,11 @@ footer.page-footer {
 }
 
 @keyframes stamp {
-    from {display: block; transform: scale(100);}
-    to {display: block; width: 50px; height: 50px;}
+    from {transform: scale(1000);}
+    to {width: 50px; height: 50px;}
 }
 
 @keyframes slide-from-right {
-    from {display: none; transform: translateX(1000px);}
-    to {display: block; transform: translateX(0);}
+    from {transform: translateX(5000px);}
+    to {transform: translateX(0);}
 }

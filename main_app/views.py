@@ -9,6 +9,17 @@ from .models import Goal, Checkpoint
 from .forms import CheckpointForm
 from datetime import datetime
 
+# testing auto-email feature
+from django.core.mail import send_mail
+from django.conf import settings
+# send_mail(
+#     subject='AimAlign: 24-hour Goal Reminder',
+#     message='This is a test message.',
+#     from_email=settings.EMAIL_HOST_USER,
+#     recipient_list=[settings.RECIPIENT_ADDRESS],
+#     fail_silently=False,
+# )
+
 # Create your views here.
 
 def home(request):

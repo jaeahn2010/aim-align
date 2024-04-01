@@ -124,3 +124,11 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com' #later move to .env
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True #mandatory for personal email providers
+EMAIL_HOST_USER = 'aimaligntest@gmail.com' #move to .env
+EMAIL_HOST_PASSWORD = 'vqph iauo ahsv vvci' #app pw: move to .env
+RECIPIENT_ADDRESS = 'jaeahn2010@gmail.com' #for testing purposes only

@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>AimAlign</title>
+        <link rel="icon" href="../static/images/aimalign-logo-transparent.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,23 +19,23 @@
         <header class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
-                <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;AimAlign</a></li>
-                </ul>
-                <ul class="right">
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'goals_create' %}">Set a New Goal</a></li>
-                        <li><a href="{% url 'index' %}">View All Goals</a></li>
-                        <li><form method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button id="logout-btn" type="submit">Log Out</button>
-                        </form></li>
-                    {% else %}
-                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                        <li><a href="{% url 'login' %}">Log In</a></li>
-                    {% endif %}
-                </ul>
+                    <ul>
+                        <li><a href="{% url 'home' %}" class="left brand-logo" id="logo-link"><img id="logo" src="../static/images/aimalign-logo-transparent.png"/>&nbsp;&nbsp;AimAlign</a></li>
+                    </ul>
+                    <ul class="right">
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'goals_create' %}">Set a New Goal</a></li>
+                            <li><a href="{% url 'index' %}">View All Goals</a></li>
+                            <li><form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button id="logout-btn" type="submit">Log Out</button>
+                            </form></li>
+                        {% else %}
+                            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                            <li><a href="{% url 'login' %}">Log In</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </nav>
         </header>
